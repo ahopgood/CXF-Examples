@@ -1,0 +1,29 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://cxf.apache.org/jaxws 				http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	
+	<!-- Service -->
+	<jaxws:endpoint 
+	  id="helloWorld" 
+	  implementor="com.alexander.examples.cxf.spring.service.HelloWorldImpl" 
+	  address="http://localhost:8080/CXF-Server-0.0.1-SNAPSHOT/AlexServices/HelloWorld" />
+	  
+	  <!-- implementor field can point to a spring managed bean e.g. #hello where hello is the bean id -->
+	  
+	<!-- Client  
+	<bean id="clientBean" class="com.alexander.example.cxf.spring.client.ClientBean">
+		<property name="webservice" ref="helloClient"/>
+	</bean>
+	
+	<jaxws:client
+		id="helloClient"
+		serviceClass="com.alexander.example.cxf.spring.client.HelloWorld"
+		address="http://localhost:8080/AlexServices/HelloWorld" />
+	-->
+</beans>
