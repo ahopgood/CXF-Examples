@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cxf="http://cxf.apache.org/core"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://cxf.apache.org/jaxws 				http://cxf.apache.org/schemas/jaxws.xsd
+						http://cxf.apache.org/core 					http://cxf.apache.org/schemas/core.xsd">
+ 
+ 	<!-- adding the feature to the bus-->
+    <!-- 
+    <cxf:bus>        
+    	<cxf:features>            
+    		<cxf:logging/>        
+    	</cxf:features>    
+    </cxf:bus>
+    -->
+	<bean id="clientBean" class="com.alexander.examples.cxf.client.MainProxy">
+		<property name="helloClient" ref="helloClient"/>
+	</bean>
+	
+	<jaxws:client id="helloClient" 
+		serviceClass="com.alexander.examples.cxf.spring.service.interfaces.HelloWorld" 
+		address="http://localhost:8080/CXF-Server-0.0.1-SNAPSHOT/AlexServices/HelloWorld">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature"/>
+		</jaxws:features> 
+	</jaxws:client>
+</beans>
