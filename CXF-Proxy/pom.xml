@@ -17,6 +17,6 @@
   	</dependency>
   </dependencies>
   <properties>
-  	<cxf.version>2.4.0</cxf.version>
+  	<cxf.version>2.6.0</cxf.version>
   </properties>
 </project>
